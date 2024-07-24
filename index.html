@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/style.css">
+        <title>Groupie tracker</title>
+    </head>
+    <body>
+        {{range .}}
+        <div class="container">
+            <div class="card__container">
+                <article class="card__article">
+                    <img src="{{.Image}}" alt="image" class="card__img">
+                    <div class="card__data">
+                        <span class="card__descreption">{{range .Memebers}}{{.}}{{end}}</span>
+                            <h2 class="card__title">{{.Name}}</h2>
+                            <a href="#" class="card__button">Read More</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+        {{end}}
+    </body>
+</html>
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/style.css">
+        <title>Groupie tracker</title>
+    </head>
+    <body>
+        <div class="container">
+
+        {{range .}}
+        <form action="/Infos" method="post">
+        <div class="band" > 
+                <img src="{{.Image}}">
+                <br>
+                {{.Name}}
+                <br>
+                {{range .Memebers}}{{.}}{{end}}
+                <br>
+                {{.CreationDate}}<br>
+                {{.FirstAlbum}}<br>
+                {{.Locations}}<br>
+                {{.ConsertDates}}<br>
+                {{.Rolations}}<br>
+            <br>
+            <input type="hidden" name="band" value="{{.Id}}">
+            <input type="hidden" name="bandimage" value="{{.Image}}">
+            <button type="submit">More Infos</button>
+        </div>
+    </form>
+        {{end}}
+        </div>
+    </body>
+</html> -->
+
+
