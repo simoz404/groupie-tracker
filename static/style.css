@@ -33,6 +33,7 @@ body {
   font-family: var(--body-font);
   background-color: var(--body-color);
   color: var(--text-color);
+
 }
 
 img {
@@ -53,7 +54,7 @@ img {
 .card__container {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 3.5rem;
   justify-content: center;
 }
 

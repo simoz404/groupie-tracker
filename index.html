@@ -5,9 +5,9 @@
         <title>Groupie tracker</title>
     </head>
     <body>
-        {{range .}}
         <div class="container">
             <div class="card__container">
+                {{range .}}
                 <article class="card__article">
                     <img src="{{.Image}}" alt="image" class="card__img">
                     <div class="card__data">
@@ -16,9 +16,9 @@
                             <a href="#" class="card__button">Read More</a>
                     </div>
                 </article>
+                {{end}}
             </div>
         </div>
-        {{end}}
     </body>
 </html>
 
