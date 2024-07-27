@@ -11,9 +11,19 @@
                 <article class="card__article">
                     <img src="{{.Image}}" alt="image" class="card__img">
                     <div class="card__data">
-                        <span class="card__descreption">{{range .Memebers}}{{.}}{{end}}</span>
+                        <br>
+                        <span class="card__descreption">Creation Date : {{.CreationDate}}</span>
+                        <br>
+                        <span class="card__descreption">First Album : {{.FirstAlbum}}</span>
+                        <br>
+                        <span class="card__descreption">Memebers : {{range .Memebers}}{{.}}{{end}}</span>
+                        <br>
                             <h2 class="card__title">{{.Name}}</h2>
-                            <a href="#" class="card__button">Read More</a>
+                            <a href="#" class="card__button">locations</a>
+                            <br>
+                            <a href="#" class="card__button">concertDates</a>
+                            <br>
+                            <a href="#" class="card__button">relations</a>
                     </div>
                 </article>
                 {{end}}
