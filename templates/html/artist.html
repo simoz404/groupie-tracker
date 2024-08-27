@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/artist.css" />
+
+    <title>Groupir Tracker | {{ .Artist.Name }}</title>
+  </head>
+  <body>
+    <img src="{{.Artist.Image}}" />
+    <h1>{{.Artist.Name}}</h1>
+    <p>
+      Members:<br />
+      {{range .Artist.Members}} {{.}} <br />
+      {{end}}
+    </p>
+    <p>
+      Creation Date: <br />
+      {{.Artist.CreationDate}}
+    </p>
+    <p>
+      First album: <br />
+      {{.Artist.FirstAlbum}}
+    </p>
+    <p>
+      Locations:<br />
+      {{range .Locations.Locations}} {{.}}<br />
+      {{end}}
+    </p>
+    <p>
+      Dates:<br />
+      {{range .Dates.Dates}} {{.}}<br />
+      {{end}}
+    </p>
+    <p>
+      Relations:<br />
+      {{range $k, $v := .Relation.DatesLocations}} {{$k}}: {{range $v }}<br />
+      {{.}} {{end}}<br />
+      {{end}}
+    </p>
+  </body>
+</html>

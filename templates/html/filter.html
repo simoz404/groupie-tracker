@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/index.css" />
+    <title>Groupie Tracker | Artists</title>
+  </head>
+  <body>
+    <h1>Groopie Tracker</h1>
+    <h1>{{.MaxCD}}</h1>
+    <h1>{{.MinCD}}</h1>
+    <div class="container">
+        {{range .Artists}}
+        {{if and (ge .CreationDate $.MinCD) (le .CreationDate $.MaxCD)}}
+        {{if and (ge .FirstAlbum $.MinFA) (le .FirstAlbum $.MaxFA)}}
+        {{if le (len .Members) $.Members}}
+      <div class="wrapper">
+        <h1>{{.FirstAlbum}}</h1>
+          <img src="{{.Image}}" />
+        <h2>{{.Name}}</h2>
+        <p>{{range .Members}} {{.}} {{end}}</p>
+        <form action="/artist/{{.Id}}">
+          <button role="button">More infos</button>
+        </form>
+    </div>
+    {{end}}
+    {{end}}
+    {{end}}
+      {{end}}
+    </div>
+  </body>
+</html>

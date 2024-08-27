@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/index.css" />
+    <title>Groupie Tracker | Artists</title>
+  </head>
+  <body>
+    <form action="/filter" method="get">
+      <label>Creation Date:</label>
+        <label for="minCD">Min:</label>
+        <input type="range" id="minCD" name="minCD" min="1900" max="1962" value="1900" 
+               oninput="minCDOutput.value=this.value">
+        <output id="minCDOutput" for="minCD">1900</output>
+
+        <label for="maxCD">Max:</label>
+        <input type="range" id="maxCD" name="maxCD" min="1962" max="2024" value="2024" 
+               oninput="maxCDOutput.value=this.value">
+        <output id="maxCDOutput" for="maxCD">2024</output>
+      
+        <br><br>
+
+        <label>First Album:</label>
+        <label for="minFA">Min:</label>
+        <input type="range" id="minFA" name="minFA" min="1900" max="1962" value="1900" 
+               oninput="minFAOutput.value=this.value">
+        <output id="minFAOutput" for="minFA">1900</output>
+
+        <label for="maxFA">Max:</label>
+        <input type="range" id="maxFA" name="maxFA" min="1962" max="2024" value="2024" 
+               oninput="maxFAOutput.value=this.value">
+        <output id="maxFAOutput" for="maxFA">2024</output>
+
+        <br><br>
+      
+      <label for="vol">| NR Members:</label>
+      <input type="radio" name="Members" value="1">
+      <label for="1">1</label>
+      <input type="radio" name="Members" value="2">
+      <label for="2">2</label>
+      <input type="radio" name="Members" value="3">
+      <label for="3">3</label>
+      <input type="radio" name="Members" value="4">
+      <label for="4">4</label>
+      <input type="radio" name="Members" value="5">
+      <label for="5">5</label>
+      <input type="radio" name="Members" value="6">
+      <label for="6">6</label>
+      <input type="radio" name="Members" value="7">
+      <label for="7">7</label>
+      <input type="radio" name="Members" value="8" checked>
+      <label for="8">8</label>
+      <input type="submit" value="Submit">
+    </form>
+    <h1>Groopie Tracker</h1>
+    <div class="container">
+      {{range .}}
+      <div class="wrapper">
+        <img src="{{.Image}}" />
+        <h2>{{.Name}}</h2>
+        <p>{{range .Members}} {{.}} {{end}}</p>
+        <form action="/artist/{{.Id}}">
+          <button role="button">More infos</button>
+        </form>
+      </div>
+      {{end}}
+    </div>
+  </body>
+</html>
