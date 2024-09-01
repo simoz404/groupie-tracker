@@ -7,6 +7,7 @@
     <title>Groupie Tracker | Artists</title>
   </head>
   <body>
+    <h1>Groopie Tracker</h1>
     <form action="/filter" method="get">
       <label>Creation Date:</label>
         <label for="minCD">Min:</label>
@@ -33,24 +34,24 @@
         <output id="maxFAOutput" for="maxFA">2024</output>
 
         <br><br>
-      
-      <label for="vol">NR Members:</label>
-      <input type="radio" name="Members" value="1">
-      <label for="1">1</label>
-      <input type="radio" name="Members" value="2">
-      <label for="2">2</label>
-      <input type="radio" name="Members" value="3">
-      <label for="3">3</label>
-      <input type="radio" name="Members" value="4">
-      <label for="4">4</label>
-      <input type="radio" name="Members" value="5">
-      <label for="5">5</label>
-      <input type="radio" name="Members" value="6">
-      <label for="6">6</label>
-      <input type="radio" name="Members" value="7">
-      <label for="7">7</label>
-      <input type="radio" name="Members" value="8" checked>
-      <label for="8">8</label>
+                <label for="vol">NR Members:</label>
+        <input type="checkbox" name="m1" value="1" checked>
+        <label for="1">1</label>
+        <input type="checkbox" name="m2" value="2" checked>
+        <label for="2">2</label>
+        <input type="checkbox" name="m3" value="3" checked>
+        <label for="3">3</label>
+        <input type="checkbox" name="m4" value="4" checked>
+        <label for="4">4</label>
+        <input type="checkbox" name="m5" value="5" checked>
+        <label for="5">5</label>
+        <input type="checkbox" name="m6" value="6" checked>
+        <label for="6">6</label>
+        <input type="checkbox" name="m7" value="7" checked>
+        <label for="7">7</label>
+        <input type="checkbox" name="m8" value="8" checked>
+        <label for="8">8</label>
+
 
       <br><br>
       <label for="cars">Choose a location:</label>
@@ -63,7 +64,7 @@
       <br><br>
       <input type="submit" value="Submit">
     </form>
-    <h1>Groopie Tracker</h1>
+    
     <div class="container">
       {{range .Artists}}
       <div class="wrapper">
