@@ -12,12 +12,35 @@ type Artists struct {
 	Relations    string   `json:"relations"`
 }
 
-type Locations struct {
+
+type Location struct {
+	ID        int      `json:"id"`
 	Locations []string `json:"locations"`
+}
+
+type Locations struct {
+	Id        int      `json:"id"`
+	Locations []string `json:"locations"`
+}
+
+type Locationf struct {
+    Indexf []struct {
+		Id int `json:"id"`
+        Locations []string `json:"locations"`
+		Dates string `json:"dates"`
+    } `json:"index"`
+}
+
+type Index struct {
+	Locations []Location `json:"locations"`
 }
 
 type Dates struct {
 	Dates []string `json:"dates"`
+}
+
+type Loc struct {
+	Locations []Locations `json:"index"`
 }
 
 type Relations struct {
@@ -26,9 +49,12 @@ type Relations struct {
 
 type Data struct {
 	Artist    Artists
-	Locations Locations
+	Locations Location
 	Dates     Dates
 	Relation  Relations
 }
 
+
+
 var ArtistsData []Artists
+var LocationsData Loc

@@ -10,12 +10,12 @@
     <form action="/filter" method="get">
       <label>Creation Date:</label>
         <label for="minCD">Min:</label>
-        <input type="range" id="minCD" name="minCD" min="1900" max="1962" value="1900" 
+        <input type="range" id="minCD" name="minCD" min="1962" max="1993" value="1962" 
                oninput="minCDOutput.value=this.value">
-        <output id="minCDOutput" for="minCD">1900</output>
+        <output id="minCDOutput" for="minCD">1962</output>
 
         <label for="maxCD">Max:</label>
-        <input type="range" id="maxCD" name="maxCD" min="1962" max="2024" value="2024" 
+        <input type="range" id="maxCD" name="maxCD" min="1993" max="2024" value="2024" 
                oninput="maxCDOutput.value=this.value">
         <output id="maxCDOutput" for="maxCD">2024</output>
       
@@ -23,18 +23,18 @@
 
         <label>First Album:</label>
         <label for="minFA">Min:</label>
-        <input type="range" id="minFA" name="minFA" min="1900" max="1962" value="1900" 
+        <input type="range" id="minFA" name="minFA" min="1962" max="1993" value="1962" 
                oninput="minFAOutput.value=this.value">
-        <output id="minFAOutput" for="minFA">1900</output>
+        <output id="minFAOutput" for="minFA">1962</output>
 
         <label for="maxFA">Max:</label>
-        <input type="range" id="maxFA" name="maxFA" min="1962" max="2024" value="2024" 
+        <input type="range" id="maxFA" name="maxFA" min="1993" max="2024" value="2024" 
                oninput="maxFAOutput.value=this.value">
         <output id="maxFAOutput" for="maxFA">2024</output>
 
         <br><br>
       
-      <label for="vol">| NR Members:</label>
+      <label for="vol">NR Members:</label>
       <input type="radio" name="Members" value="1">
       <label for="1">1</label>
       <input type="radio" name="Members" value="2">
@@ -51,11 +51,21 @@
       <label for="7">7</label>
       <input type="radio" name="Members" value="8" checked>
       <label for="8">8</label>
+
+      <br><br>
+      <label for="cars">Choose a location:</label>
+      <select name="Locations" id="Locations">
+        <option value="" selected disabled>Select a location</option>
+          {{range .LocationsUnique}}
+        <option value="{{.}}">{{.}}</option>
+          {{end}}
+        </select>
+      <br><br>
       <input type="submit" value="Submit">
     </form>
     <h1>Groopie Tracker</h1>
     <div class="container">
-      {{range .}}
+      {{range .Artists}}
       <div class="wrapper">
         <img src="{{.Image}}" />
         <h2>{{.Name}}</h2>

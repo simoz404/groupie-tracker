@@ -47,7 +47,7 @@ func ArtistHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	locations := utils.Locations{}
+	locations := utils.Location{}
 	err = json.Unmarshal(locationData, &locations)
 	if err != nil {
 		utils.HandleError(w, "Failed to unmarshal artist data", http.StatusInternalServerError)

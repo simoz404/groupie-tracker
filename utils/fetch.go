@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"encoding/json"
 	"io"
 	"net/http"
 )
@@ -17,4 +18,18 @@ func GetData(url string) ([]byte, error) {
 		return nil, err
 	}
 	return data, nil
+}
+
+func GetLocations(w http.ResponseWriter) {
+	data, err := GetData("https://groupietrackers.herokuapp.com/api/locations")
+	if err != nil {
+		HandleError(w, "Internal Server Error", http.StatusInternalServerError)
+		return
+	}
+
+	err = json.Unmarshal(data, &LocationsData)
+	if err != nil {
+		HandleError(w, "Internal Server Error", http.StatusInternalServerError)
+		return
+	}
 }

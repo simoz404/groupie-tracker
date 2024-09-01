@@ -26,18 +26,28 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	err = json.Unmarshal(data, &utils.ArtistsData)
+	
 	if err != nil {
 		utils.HandleError(w, "Internal Server Error", http.StatusInternalServerError)
 		return
 	}
 
 	tmpl, err := template.ParseFiles("./templates/html/index.html")
+
+	uniqueLocations := utils.LocactionsUnique()
+
 	if err != nil {
 		fmt.Println(err)
 		utils.HandleError(w, "Internal Server Error", http.StatusInternalServerError)
 		return
 	}
-	err = tmpl.Execute(w, utils.ArtistsData)
+	err = tmpl.Execute(w, struct {
+		Artists []utils.Artists
+		LocationsUnique []string
+	} {
+		Artists: utils.ArtistsData,
+		LocationsUnique: uniqueLocations,
+	})
 	if err != nil {
 		utils.HandleError(w, "Internal Server Error", http.StatusInternalServerError)
 	}

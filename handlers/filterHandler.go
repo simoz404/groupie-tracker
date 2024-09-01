@@ -37,30 +37,43 @@ func Filter(w http.ResponseWriter, r *http.Request) {
 		utils.HandleError(w, "Internal Server Error", http.StatusInternalServerError)
 		return
 	}
+	
 	minCD, _ := strconv.Atoi(r.FormValue("minCD"))
     maxCD, _ := strconv.Atoi(r.FormValue("maxCD"))
     minFA := r.FormValue("minFA")
     maxFA := r.FormValue("maxFA")
 	members, _ := strconv.Atoi(r.FormValue("Members"))
+	location := r.FormValue("Locations")
 
     for i := range utils.ArtistsData {
         utils.ArtistsData[i].FirstAlbum = utils.ArtistsData[i].FirstAlbum[len(utils.ArtistsData[i].FirstAlbum)-4:]
     }
+
+	utils.GetLocations(w)
+
 	err = tmpl.Execute(w, struct {
 		Artists []utils.Artists
+		Loc utils.Loc
 		MinCD   int
 		MaxCD   int
 		MinFA   string
 		MaxFA   string
 		Members int
+		Location string
+		Is bool
 	}{
 		Artists: utils.ArtistsData,
+		Loc: utils.LocationsData,
 		MinCD:   minCD,
 		MaxCD:   maxCD,
 		MinFA:   minFA,
 		MaxFA:   maxFA,
 		Members: members,
+		Location: location,
+		Is: false,
 	})
+	fmt.Println(utils.LocationsData.Locations)
+	fmt.Println(err)
 	if err != nil {
 		utils.HandleError(w, "Internal Server Error", http.StatusInternalServerError)
 	}
