@@ -33,7 +33,6 @@ func Filter(w http.ResponseWriter, r *http.Request) {
 
 	tmpl, err := template.ParseFiles("./templates/html/filter.html")
 	if err != nil {
-		fmt.Println(err)
 		utils.HandleError(w, "Internal Server Error", http.StatusInternalServerError)
 		return
 	}
@@ -93,7 +92,6 @@ func Filter(w http.ResponseWriter, r *http.Request) {
 		Location: location,
 		Is:       false,
 	})
-	fmt.Println(utils.LocationsData.Locations)
 	fmt.Println(err)
 	if err != nil {
 		utils.HandleError(w, "Internal Server Error", http.StatusInternalServerError)
